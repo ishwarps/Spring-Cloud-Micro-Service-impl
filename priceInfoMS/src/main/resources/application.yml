@@ -1,0 +1,12 @@
+spring:    
+  application:
+    name: priceInfoMS
+eureka:
+  instance:
+     nonSecurePort: 80
+     hostname: ${vcap.application.uris[0]}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: https://discovery-service-eureka.apps.eu02.cf.canopy-cloud.com/eureka/

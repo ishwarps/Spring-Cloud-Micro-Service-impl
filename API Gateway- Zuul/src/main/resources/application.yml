@@ -1,0 +1,38 @@
+security:
+  oauth2:
+    client:
+      clientId: zuul_client
+      clientSecret: secret
+      accessTokenUri: https://uaa.sys.eu02.cf.canopy-cloud.com/oauth/token
+      userAuthorizationUri: https://uaa.sys.eu02.cf.canopy-cloud.com/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://uaa.sys.eu02.cf.canopy-cloud.com/userinfo
+spring:    
+  application:
+    name: API-GateWay-Zuul
+eureka:
+  instance:
+     nonSecurePort: 80
+     hostname: ${vcap.application.uris[0]}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: https://discovery-service-eureka.apps.eu02.cf.canopy-cloud.com/eureka/
+            
+zuul:
+#Service will be mapped under the /api URI
+  prefix: /api
+#  Uncomment to disable auto-registering all services read from Eureka
+#  ignoredServices: '*'
+  routes:
+    customer-by-address:
+      path: productInfoMS-by-address/**
+      url: https://productinfoms.apps.eu02.cf.canopy-cloud.com            
+      
+    customer-by-service:
+      path: /productInfoMS-by-service/**
+      serviceId: PRODUCTINFOMS
+      
+      

@@ -1,0 +1,5 @@
+---
+  applications:
+  - name: discovery-service-eureka
+    memory: 1GB
+    path: target\discovery-service-eureka-0.0.1-SNAPSHOT.jar

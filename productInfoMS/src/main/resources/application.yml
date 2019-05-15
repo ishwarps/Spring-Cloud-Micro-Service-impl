@@ -1,0 +1,19 @@
+spring:    
+  application:
+    name: productInfoMS      
+  cloud:
+    config:
+      uri: https://config-server.apps.eu02.cf.canopy-cloud.com
+eureka:
+  instance:
+     nonSecurePort: 80
+     hostname: ${vcap.application.uris[0]}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: https://discovery-service-eureka.apps.eu02.cf.canopy-cloud.com/eureka/
+#This following config required to access /refresh url without basi
+management:
+  security:
+    enabled: false

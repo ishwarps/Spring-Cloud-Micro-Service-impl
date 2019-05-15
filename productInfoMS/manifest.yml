@@ -1,0 +1,11 @@
+---
+applications:
+- name: productInfoMs
+  memory: 1GB
+  random-route: false
+  path: target/productInfoMS-0.0.1-SNAPSHOT.jar
+  env:
+    spring.profiles.active: development
+                           
+
+
